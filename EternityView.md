@@ -57,6 +57,8 @@ public-hoist-pattern[] = *jest*
 
 ## shadcn/ui
 ```
-代码使用tailwindcss@3构建, 安装shadcn时需要使用@2.3.0版本, 以防代码冲突无法使用
+由于tailwindcss@4+要求浏览器版本Safari 16.4+, Chrome 111+, and Firefox 128+
+为了兼容更多浏览器，当前使用tailwindcss@3.4.17版本 shadcn/ui使用@2.3.0版本
+代码使用tailwindcss@3.4.17构建, 安装shadcn时需要使用@2.3.0版本, 以防代码冲突无法使用
 例如 pnpm dlx shadcn@2.3.0 add alert-dialog
 ```
