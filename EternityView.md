@@ -35,8 +35,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
 ## 开发所需配置
+
 ```pnpm
 使用pnpm时务必配置包提升，否则可能遇到eslint无法正常使用的情况
 # 基础策略
@@ -56,6 +56,7 @@ public-hoist-pattern[] = *jest*
 ```
 
 ## shadcn/ui
+
 ```
 由于tailwindcss@4+要求浏览器版本Safari 16.4+, Chrome 111+, and Firefox 128+
 为了兼容更多浏览器，当前使用tailwindcss@3.4.17版本 shadcn/ui使用@2.3.0版本

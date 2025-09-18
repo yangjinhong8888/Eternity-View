@@ -1,67 +1,69 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss"
 
 export default {
-    darkMode: ["class"],
-    content: ["./src/app/**/*.{html,js,tsx}", "./src/components/**/*.{html,js,tsx}"],
-    theme: {
-      extend: {
-        width: {
-          '300': '75rem',
-        },
+  darkMode: ["class"],
+  content: [
+    "./src/app/**/*.{html,js,tsx}",
+    "./src/components/**/*.{html,js,tsx}",
+  ],
+  theme: {
+    extend: {
+      width: {
+        "300": "75rem",
+      },
 
-        /**
-         * 下方为Shadcn/ui 官方主题 pnpm dlx shadcn@2.3.0 init 自动生成
-         */
-        borderRadius: {
-          lg: 'var(--radius)',
-          md: 'calc(var(--radius) - 2px)',
-          sm: 'calc(var(--radius) - 4px)'
+      /**
+       * 下方为Shadcn/ui 官方主题 pnpm dlx shadcn@2.3.0 init 自动生成
+       */
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
-        colors: {
-          background: 'hsl(var(--background))',
-          foreground: 'hsl(var(--foreground))',
-          card: {
-            DEFAULT: 'hsl(var(--card))',
-            foreground: 'hsl(var(--card-foreground))'
-          },
-          popover: {
-            DEFAULT: 'hsl(var(--popover))',
-            foreground: 'hsl(var(--popover-foreground))'
-          },
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))'
-          },
-          secondary: {
-            DEFAULT: 'hsl(var(--secondary))',
-            foreground: 'hsl(var(--secondary-foreground))'
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))'
-          },
-          accent: {
-            DEFAULT: 'hsl(var(--accent))',
-            foreground: 'hsl(var(--accent-foreground))'
-          },
-          destructive: {
-            DEFAULT: 'hsl(var(--destructive))',
-            foreground: 'hsl(var(--destructive-foreground))'
-          },
-          border: 'hsl(var(--border))',
-          input: 'hsl(var(--input))',
-          ring: 'hsl(var(--ring))',
-          chart: {
-            '1': 'hsl(var(--chart-1))',
-            '2': 'hsl(var(--chart-2))',
-            '3': 'hsl(var(--chart-3))',
-            '4': 'hsl(var(--chart-4))',
-            '5': 'hsl(var(--chart-5))'
-          }
-        }
-      }
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
+      },
     },
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    plugins: [require("tailwindcss-animate")],
-} satisfies Config;
-
+  },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
