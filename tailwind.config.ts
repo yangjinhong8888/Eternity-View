@@ -11,6 +11,10 @@ export default {
       width: {
         "300": "75rem",
       },
+      backgroundImage: {
+        "random-1920-1080": "url('https://picsum.photos/1920/1080')",
+        random2: "url('https://www.loliapi.com/acg/pc/')",
+      },
 
       /**
        * 下方为Shadcn/ui 官方主题 pnpm dlx shadcn@2.3.0 init 自动生成

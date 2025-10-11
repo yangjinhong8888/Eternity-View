@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <div className={"relative"}>
       <Header />
-      <div className={"grid h-screen place-items-center p-20"}>HomePage</div>
+      <div className={"grid h-screen place-items-center bg-random2 p-20"}>
+        HomePage
+      </div>
       <Footer
         className={
           "absolute bottom-0 flex h-10 items-center justify-center px-52"
