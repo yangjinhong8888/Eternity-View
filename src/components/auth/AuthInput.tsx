@@ -1,3 +1,4 @@
+import { ChangeEvent, FocusEvent } from "react"
 import { Control, FieldPath, FieldValues } from "react-hook-form"
 import {
   FormControl,
@@ -12,6 +13,8 @@ interface AuthInputProps<T extends FieldValues> {
   name: FieldPath<T>
   placeholder: string
   type?: string
+  onChange?: (value: string) => void
+  onBlur?: (value: string) => void
 }
 
 export default function AuthInput<T extends FieldValues>({
@@ -19,6 +22,8 @@ export default function AuthInput<T extends FieldValues>({
   name,
   placeholder,
   type = "text",
+  onChange,
+  onBlur,
 }: AuthInputProps<T>) {
   return (
     <FormField
@@ -31,6 +36,14 @@ export default function AuthInput<T extends FieldValues>({
               placeholder={placeholder}
               {...field}
               type={type}
+              onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                field.onChange(event)
+                onChange?.(event.target.value)
+              }}
+              onBlur={(event: FocusEvent<HTMLInputElement>) => {
+                field.onBlur()
+                onBlur?.(event.target.value)
+              }}
               className={
                 "peer rounded-none border-l-0 border-r-0 border-t-0 bg-transparent px-0 py-0 outline-none hover:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
               }

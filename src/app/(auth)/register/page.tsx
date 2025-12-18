@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useEffect } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
@@ -28,25 +27,13 @@ const formSchema = z
 export default function Register() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    mode: "onChange", // 实时验证
+    mode: "onBlur", // 实时验证
     defaultValues: {
       username: "",
       password: "",
       passwordConfirm: "",
     },
   })
-
-  // 监听两个密码字段的变化
-  const password = form.watch("password")
-  const passwordConfirm = form.watch("passwordConfirm")
-
-  useEffect(() => {
-    // 只要 passwordConfirm 有值，就在 password 改变时重新验证
-    // 不检查是否有错误，因为可能从"无错误"变成"有错误"的情况
-    if (passwordConfirm) {
-      form.trigger("passwordConfirm")
-    }
-  }, [password, passwordConfirm, form])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // TODO: 调用注册 action
@@ -75,6 +62,15 @@ export default function Register() {
               name="password"
               placeholder="密码"
               type="password"
+              onBlur={() => {
+                void (async () => {
+                  const passwordValid = await form.trigger("password")
+                  if (!passwordValid) return
+                  const confirmValue = form.getValues("passwordConfirm")
+                  if (!confirmValue) return
+                  void form.trigger("passwordConfirm")
+                })()
+              }}
             />
             <AuthInput
               control={form.control}
