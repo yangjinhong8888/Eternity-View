@@ -10,5 +10,5 @@
   "bracketSpacing": true,
   "useTabs": false,
   "quoteProps": "as-needed",
-  "endOfLine": "lf"
+  "endOfLine": "auto"
 }
