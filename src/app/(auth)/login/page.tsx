@@ -4,16 +4,9 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { Form } from "@/components/ui/form"
 import Link from "next/link"
-import { toRegister } from "@/app/services/auth/client"
+import AuthInput from "@/components/auth/AuthInput"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -27,13 +20,16 @@ const formSchema = z.object({
 export default function Login() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onChange", // 实时验证，提供即时反馈
     defaultValues: {
       username: "",
       password: "",
     },
   })
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await toRegister()
+    // TODO: 调用登录 action
+    // import { loginAction } from "@/services/auth/actions"
+    // await loginAction(values.username, values.password)
     console.log(values)
   }
 
@@ -48,52 +44,16 @@ export default function Login() {
         <Link href="/register">没有账号？立即注册&gt;</Link>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8">
-            <FormField
+            <AuthInput
               control={form.control}
               name="username"
-              render={({ field }) => (
-                <FormItem className={"space-y-0"}>
-                  <FormControl>
-                    <Input
-                      placeholder="用户名/邮箱"
-                      {...field}
-                      className={
-                        "peer rounded-none border-l-0 border-r-0 border-t-0 bg-transparent px-0 py-0 outline-none hover:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-                      }
-                    />
-                  </FormControl>
-                  <div
-                    className={
-                      "relative bottom-0.5 h-px w-0 bg-amber-800 peer-hover:w-full peer-hover:transition-all peer-hover:duration-1000 peer-hover:ease-in-out"
-                    }
-                  ></div>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="用户名/邮箱"
             />
-            <FormField
+            <AuthInput
               control={form.control}
               name="password"
-              render={({ field }) => (
-                <FormItem className={"space-y-0"}>
-                  <FormControl>
-                    <Input
-                      placeholder="密码"
-                      {...field}
-                      type={"password"}
-                      className={
-                        "peer rounded-none border-l-0 border-r-0 border-t-0 bg-transparent px-0 py-0 outline-none hover:border-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-                      }
-                    />
-                  </FormControl>
-                  <div
-                    className={
-                      "relative bottom-0.5 h-px w-0 bg-amber-800 peer-hover:w-full peer-hover:transition-all peer-hover:duration-1000 peer-hover:ease-in-out"
-                    }
-                  ></div>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="密码"
+              type="password"
             />
             <div
               className={

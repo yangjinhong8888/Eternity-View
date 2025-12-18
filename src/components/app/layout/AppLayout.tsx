@@ -11,7 +11,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col justify-between">
       <Header />
-      <Content className="flex-auto">{children}</Content>
+      <Content className="flex-auto pt-16">{children}</Content>
       <Footer />
     </div>
   )
